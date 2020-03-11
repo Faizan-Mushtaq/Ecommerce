@@ -9,7 +9,11 @@ import android.view.Menu;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.ecommerce.Model.Products;
 import com.example.ecommerce.Prevalent.Prevalent;
+import com.example.ecommerce.ViewHolder.ProductViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -113,8 +117,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-   // @Override
- /*   protected void onStart()
+    @Override
+   protected void onStart()
     {
         super.onStart();
 
@@ -139,7 +143,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                             @Override
                             public void onClick(View view)
                             {
-                                if (type.equals("Admin"))
+                                /*if (type.equals("Admin"))
                                 {
                                     Intent intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
                                     intent.putExtra("pid", model.getPid());
@@ -150,7 +154,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                                     Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
                                     intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
-                                }
+                                }*/
                             }
                         });
                     }
@@ -166,7 +170,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 };
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-    }*/
+    }
 
     @Override
     public void onBackPressed() {

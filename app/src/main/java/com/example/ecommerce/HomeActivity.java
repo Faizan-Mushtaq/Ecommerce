@@ -99,11 +99,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
 
-      /*  if (!type.equals("Admin"))
+      if (!type.equals("Admin"))
         {
             userNameTextView.setText(Prevalent.currentOnlineUser.getName());
-            Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
-        }*/
+          //  Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+        }
 
 
         recyclerView = findViewById(R.id.recycler_menu);

@@ -239,7 +239,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         {
             if (!type.equals("Admin"))
             {
-                Intent intent = new Intent(HomeActivity.this, MainActivity.class);//SettinsActivity.class);
+                Intent intent = new Intent(HomeActivity.this,SettingsActivity.class);
                 startActivity(intent);
             }
         }

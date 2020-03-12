@@ -138,7 +138,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         Calendar calendar=Calendar.getInstance();
         SimpleDateFormat currentDate=new SimpleDateFormat("MMM dd YYYY");
         saveCurrentDate=currentDate.format(calendar.getTime());
-        SimpleDateFormat currentTime=new SimpleDateFormat("HH:MM:SS a");
+        SimpleDateFormat currentTime=new SimpleDateFormat("HH:MM:ss a");
         saveCurrentTime=currentTime.format(calendar.getTime());
         productRandomKey=saveCurrentDate+saveCurrentTime;
 
@@ -200,7 +200,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         productMap.put("date",saveCurrentDate);
         productMap.put("time",saveCurrentTime);
         productMap.put("description",Description);
-        productMap.put("Image",downloadImageUrl);
+        productMap.put("image",downloadImageUrl);
         productMap.put("category",CategoryName);
         productMap.put("price",Price);
         productMap.put("pname",Pname);

@@ -29,8 +29,9 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_alignParentStart="true"/>
+
                 <TextView
-                    android:id="@+id/update_settings_btn"
+                    android:id="@+id/update_account_settings_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Update"

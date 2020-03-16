@@ -229,7 +229,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void userDisplay(final CircleImageView profileImageView, final EditText fullNameEditText, final EditText userPhoneEditText, final EditText addressEditText)
     {
-        DatabaseReference UserRef= FirebaseDatabase.getInstance().getReference().child(Prevalent.currentOnlineUser.getPhone());
+        DatabaseReference UserRef= FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getPhone());
         UserRef.addValueEventListener(new ValueEventListener()
         {
             @Override
@@ -250,7 +250,9 @@ public class SettingsActivity extends AppCompatActivity {
                         userPhoneEditText.setText(phone);
                         addressEditText.setText(address);
                     }
+
                 }
+
             }
 
             @Override

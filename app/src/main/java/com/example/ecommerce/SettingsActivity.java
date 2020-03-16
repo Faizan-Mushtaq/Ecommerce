@@ -239,10 +239,10 @@ public class SettingsActivity extends AppCompatActivity {
                 {
                     if(dataSnapshot.child("image").exists())
                     {
-                        String image= Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString();
-                        String name= Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString();
-                        String phone= Objects.requireNonNull(dataSnapshot.child("phoneOrder").getValue()).toString();
-                        String address= Objects.requireNonNull(dataSnapshot.child("address").getValue()).toString();
+                        String image= dataSnapshot.child("image").getValue().toString();
+                        String name= dataSnapshot.child("name").getValue().toString();
+                        String phone= dataSnapshot.child("phoneOrder").getValue().toString();
+                        String address=dataSnapshot.child("address").getValue().toString();
                         //for password change do the same add in xml file also
 
                         Picasso.get().load(image).into(profileImageView);

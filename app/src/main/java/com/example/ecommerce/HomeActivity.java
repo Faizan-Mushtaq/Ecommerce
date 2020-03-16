@@ -148,13 +148,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                                     Intent intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
                                     intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
-                                }
-                                else
-                                {
+                                }*/
+                                //else
+                              //  {
                                     Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
                                     intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
-                                }*/
+                              //  }
                             }
                         });
                     }

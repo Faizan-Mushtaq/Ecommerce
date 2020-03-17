@@ -92,7 +92,7 @@ public class CartActivity extends AppCompatActivity {
                 overTotalPrice = overTotalPrice + oneTypeProductTPrice;
 
 
-                txtTotalAmount.setText("Total Price = $" + String.valueOf(overTotalPrice));
+                txtTotalAmount.setText("Total Price = $" + String.valueOf(overTotalPrice));//to show in cart
 
                 cartViewHolder.itemView.setOnClickListener(new View.OnClickListener()
                 {

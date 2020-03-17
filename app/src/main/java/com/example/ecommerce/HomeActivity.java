@@ -81,7 +81,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             {
                 if (!type.equals("Admin"))
                 {
-                    Intent intent = new Intent(HomeActivity.this, MainActivity.class);//CartActivity.class);
+                    Intent intent = new Intent(HomeActivity.this,CartActivity.class);
                     startActivity(intent);
                 }
             }

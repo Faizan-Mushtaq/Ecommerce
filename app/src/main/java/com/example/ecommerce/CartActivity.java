@@ -70,6 +70,7 @@ public class CartActivity extends AppCompatActivity {
     protected  void onStart()
     {
         super.onStart();
+
         final DatabaseReference cartListRef= FirebaseDatabase.getInstance().getReference().child("Cart List");
         FirebaseRecyclerOptions<Cart> options= new FirebaseRecyclerOptions.Builder<Cart>()
                                                 .setQuery(cartListRef.child("User View")
@@ -90,6 +91,8 @@ public class CartActivity extends AppCompatActivity {
                 int oneTypeProductTPrice = ((Integer.valueOf(cart.getPrice()))) * Integer.valueOf(cart.getQuantity());
                 overTotalPrice = overTotalPrice + oneTypeProductTPrice;
 
+
+                txtTotalAmount.setText("Total Price = $" + String.valueOf(overTotalPrice));
 
                 cartViewHolder.itemView.setOnClickListener(new View.OnClickListener()
                 {

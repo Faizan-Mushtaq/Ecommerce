@@ -27,5 +27,6 @@ public class CartActivity extends AppCompatActivity {
 
         NextProcessBtn=(Button)findViewById(R.id.next_btn);
         txtTotalAmount=(TextView)findViewById(R.id.total_price);
+
     }
 }

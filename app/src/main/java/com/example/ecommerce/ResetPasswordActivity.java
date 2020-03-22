@@ -76,7 +76,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
         {
             phoneNumber.setVisibility(View.VISIBLE);
 
-            verifyButton.setOnClickListener(new View.OnClickListener() {
+            verifyButton.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
                 public void onClick(View v) {
                     verifyUser();
@@ -90,9 +91,11 @@ public class ResetPasswordActivity extends AppCompatActivity {
         String answer1 = question1.getText().toString().toLowerCase();
         String answer2 = question2.getText().toString().toLowerCase();
 
-        if (question1.equals("") && question2.equals("")) {
+        if (question1.equals("") && question2.equals(""))
+        {
             Toast.makeText(ResetPasswordActivity.this, "Please answer both questions..", Toast.LENGTH_SHORT).show();
-        } else {
+        } else
+            {
             DatabaseReference ref =
                     FirebaseDatabase.getInstance().getReference()
                             .child("Users")
@@ -116,7 +119,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
         }
     }
 
-    private void displayPreviousAnswers() {
+    private void displayPreviousAnswers()
+    {
         DatabaseReference ref =
                 FirebaseDatabase.getInstance().getReference()
                         .child("Users")

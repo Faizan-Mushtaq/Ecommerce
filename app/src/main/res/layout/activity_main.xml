@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcome"
+    android:background="@drawable/welcome1"
     tools:context=".MainActivity">
     <ImageView
         android:id="@+id/app_logo"
@@ -25,7 +25,7 @@
         android:layout_marginEnd="86dp"
         android:text="Pick and Choose"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="22sp"
         android:textStyle="bold|italic"/>
     <Button
@@ -55,6 +55,6 @@
         android:padding="20dp"
         android:textAllCaps="false"
         android:text="Join Now"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorPrimaryDark"
         />
 </RelativeLayout>

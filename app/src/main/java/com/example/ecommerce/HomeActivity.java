@@ -254,6 +254,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
                 finish();
             }
+            else //for home in admin home activity
+            {
+                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

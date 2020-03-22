@@ -82,11 +82,11 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
         final String saveCurrentDate, saveCurrentTime;
 
         Calendar calForDate = Calendar.getInstance();
-        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, YYYY");
         saveCurrentDate = currentDate.format(calForDate.getTime());
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
-        saveCurrentTime = currentDate.format(calForDate.getTime());
+        saveCurrentTime = currentTime.format(calForDate.getTime());// date time error was here
 
         final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference()
                 .child("Orders")

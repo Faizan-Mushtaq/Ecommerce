@@ -223,11 +223,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         }
-        else if (id == R.id.nav_orders)//nav_search)
+        else if (id == R.id.nav_search)
         {
             if (!type.equals("Admin"))
             {
-                Intent intent = new Intent(HomeActivity.this,MainActivity.class);// SearchProductsActivity.class);
+                Intent intent = new Intent(HomeActivity.this,SearchProductsActivity.class);
                 startActivity(intent);
             }
         }

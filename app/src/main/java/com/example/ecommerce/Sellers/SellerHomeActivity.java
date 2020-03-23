@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ecommerce.Buyers.MainActivity;
 import com.example.ecommerce.Model.Products;
 import com.example.ecommerce.R;
-import com.example.ecommerce.ViewHolder.ProductViewHolder;
+import com.example.ecommerce.ViewHolder.ItemViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -105,18 +105,19 @@ public class SellerHomeActivity extends AppCompatActivity {
                 new FirebaseRecyclerOptions.Builder<Products>()
                         .setQuery(unverifiedProducts.orderByChild("sid").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid()),Products.class)
                         .build();
-        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter=
-                new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options)
+        FirebaseRecyclerAdapter<Products, ItemViewHolder> adapter=
+                new FirebaseRecyclerAdapter<Products, ItemViewHolder>(options)
                 {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, int i, @NonNull final Products products)
+                    protected void onBindViewHolder(@NonNull ItemViewHolder itemViewHolder, int i, @NonNull final Products products)
                     {
-                        productViewHolder.txtProductName.setText(products.getPname());
-                        productViewHolder.txtProductDescription.setText(products.getDescription());
-                        productViewHolder.txtProductPrice.setText("Price = " + products.getPrice() + "$");
-                        Picasso.get().load(products.getImage()).into(productViewHolder.imageView);
+                        itemViewHolder.txtProductName.setText(products.getPname());
+                        itemViewHolder.txtProductDescription.setText(products.getDescription());
+                        itemViewHolder.txtProductPrice.setText("Price = " + products.getPrice() + "$");
+                       itemViewHolder.txtProductStatus.setText(products.getProductState());
+                        Picasso.get().load(products.getImage()).into(itemViewHolder.imageView);
 
-                        productViewHolder.itemView.setOnClickListener(new View.OnClickListener()
+                        itemViewHolder.itemView.setOnClickListener(new View.OnClickListener()
                         {
                             @Override
                             public void onClick(View v)
@@ -154,10 +155,10 @@ public class SellerHomeActivity extends AppCompatActivity {
 
                     @NonNull
                     @Override
-                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+                    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
                     {
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.seller_item_view, parent, false);
-                        ProductViewHolder holder = new ProductViewHolder(view);
+                        ItemViewHolder holder = new ItemViewHolder(view);
                         return holder;
                     }
                 };

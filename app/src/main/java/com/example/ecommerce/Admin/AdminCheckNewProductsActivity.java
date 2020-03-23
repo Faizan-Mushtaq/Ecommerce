@@ -117,7 +117,8 @@ public class AdminCheckNewProductsActivity extends AppCompatActivity {
 
     private void changeProductState(String productID)
     {
-        unverifiedProducts.child(productID).child("productState").setValue("Approved")
+        unverifiedProducts.child(productID).child("productState")
+                .setValue("Approved")
                 .addOnCompleteListener(new OnCompleteListener<Void>()
                 {
             @Override

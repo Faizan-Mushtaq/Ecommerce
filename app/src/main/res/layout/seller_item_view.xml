@@ -20,11 +20,23 @@
             android:textStyle="bold"
             android:textColor="@color/colorPrimaryDark"
             />
+        <TextView
+            android:id="@+id/seller_product_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/seller_product_name"
+            android:layout_marginTop="2dp"
+            android:text=" Product State"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            />
         <ImageView
             android:id="@+id/product_seller_image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_below="@+id/product_name"
+            android:layout_below="@+id/seller_product_state"
             android:scaleType="centerCrop"
             android:layout_marginTop="2dp"
             />
@@ -53,18 +65,7 @@
             android:textColor="@color/colorPrimaryDark"
             />
 
-        <TextView
-            android:id="@+id/seller_product_state"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text=" Product State"
-            android:layout_below="@+id/product_seller_description"
-            android:textAlignment="center"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
-            />
+
 
     </RelativeLayout>
 

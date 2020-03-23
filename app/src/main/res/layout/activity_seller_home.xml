@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="My All UnVerified Products"
+            android:text="My All Products"
             android:textColor="@android:color/white"
             android:textSize="18dp"
             android:textAlignment="center"

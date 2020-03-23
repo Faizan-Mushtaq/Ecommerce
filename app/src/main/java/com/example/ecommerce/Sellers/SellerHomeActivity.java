@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -21,6 +22,8 @@ import com.example.ecommerce.R;
 import com.example.ecommerce.ViewHolder.ItemViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -70,7 +73,8 @@ public class SellerHomeActivity extends AppCompatActivity {
               {
                   case R.id.navigation_home:
 
-                      //  mTextMessage.setText(R.string.title_home);
+                      Intent intentHome=new Intent(SellerHomeActivity.this, SellerHomeActivity.class);
+                      startActivity(intentHome);
                         return true;
 
 
@@ -114,7 +118,7 @@ public class SellerHomeActivity extends AppCompatActivity {
                         itemViewHolder.txtProductName.setText(products.getPname());
                         itemViewHolder.txtProductDescription.setText(products.getDescription());
                         itemViewHolder.txtProductPrice.setText("Price = " + products.getPrice() + "$");
-                       itemViewHolder.txtProductStatus.setText(products.getProductState());
+                       itemViewHolder.txtProductStatus.setText("State: "+products.getProductState());
                         Picasso.get().load(products.getImage()).into(itemViewHolder.imageView);
 
                         itemViewHolder.itemView.setOnClickListener(new View.OnClickListener()
@@ -137,7 +141,7 @@ public class SellerHomeActivity extends AppCompatActivity {
                                     {
                                         if(which==0)// yes position
                                         {
-                                            //changeProductState(productID);
+                                            deleteProduct(productID);
                                         }
                                         if(which==1)
                                         {
@@ -165,5 +169,20 @@ public class SellerHomeActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+    }
+
+    private void deleteProduct(String productID)
+    {
+        unverifiedProducts.child(productID)
+                .removeValue()
+                .addOnCompleteListener(new OnCompleteListener<Void>()
+                {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task)
+                    {
+                        Toast.makeText(SellerHomeActivity.this, "Item has been Deleted successfully.", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
     }
 }

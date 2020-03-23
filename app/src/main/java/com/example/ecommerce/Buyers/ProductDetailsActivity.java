@@ -1,7 +1,4 @@
-package com.example.ecommerce;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.ecommerce.Buyers;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,12 +8,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.ecommerce.Model.Products;
 import com.example.ecommerce.Prevalent.Prevalent;
+import com.example.ecommerce.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

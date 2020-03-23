@@ -1,26 +1,54 @@
 package com.example.ecommerce.Sellers;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecommerce.Buyers.MainActivity;
+import com.example.ecommerce.Model.Products;
 import com.example.ecommerce.R;
+import com.example.ecommerce.ViewHolder.ProductViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 public class SellerHomeActivity extends AppCompatActivity {
         private TextView mTextMessage;
+
+    private RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+
+    private DatabaseReference unverifiedProducts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller_home);
          BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);//added this line to make button work
+
+        unverifiedProducts= FirebaseDatabase.getInstance().getReference().child("Products");
+
+        recyclerView=findViewById(R.id.seller_home_recyclerview);
+        recyclerView.setHasFixedSize(true);
+        layoutManager=new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+
        /* // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         //AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder
@@ -29,6 +57,8 @@ public class SellerHomeActivity extends AppCompatActivity {
         // NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         //NavigationUI.setupWithNavController(navView, navController);*/
+
+
     }
      private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
               =new BottomNavigationView.OnNavigationItemSelectedListener()
@@ -66,5 +96,73 @@ public class SellerHomeActivity extends AppCompatActivity {
       };
 
 
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
 
+        FirebaseRecyclerOptions<Products> options=
+                new FirebaseRecyclerOptions.Builder<Products>()
+                        .setQuery(unverifiedProducts.orderByChild("sid").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid()),Products.class)
+                        .build();
+        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter=
+                new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options)
+                {
+                    @Override
+                    protected void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, int i, @NonNull final Products products)
+                    {
+                        productViewHolder.txtProductName.setText(products.getPname());
+                        productViewHolder.txtProductDescription.setText(products.getDescription());
+                        productViewHolder.txtProductPrice.setText("Price = " + products.getPrice() + "$");
+                        Picasso.get().load(products.getImage()).into(productViewHolder.imageView);
+
+                        productViewHolder.itemView.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                final String productID= products.getPid();
+                                CharSequence[]  options=new CharSequence[]
+                                        {
+                                                "Yes",
+                                                "No"
+                                        };
+                                AlertDialog.Builder builder=new AlertDialog.Builder(SellerHomeActivity.this);
+                                builder.setTitle("Do you want to Delete this product.Are You sure?");
+                                builder.setItems(options, new DialogInterface.OnClickListener()
+                                {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which)
+                                    {
+                                        if(which==0)// yes position
+                                        {
+                                            //changeProductState(productID);
+                                        }
+                                        if(which==1)
+                                        {
+
+                                        }
+                                    }
+                                });
+
+                                builder.show();
+
+                            }
+                        });
+
+                    }
+
+                    @NonNull
+                    @Override
+                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+                    {
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.seller_item_view, parent, false);
+                        ProductViewHolder holder = new ProductViewHolder(view);
+                        return holder;
+                    }
+                };
+
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+    }
 }

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Admin.AdminCheckNewProductsActivity"></activity>
+
+        <activity android:name=".Admin.AdminCheckNewProductsActivity" />
         <activity android:name=".Admin.AdminHomeActivity" />
         <activity
             android:name=".Sellers.SellerHomeActivity"
@@ -39,10 +40,11 @@
         <activity android:name=".Sellers.SellerProductCategoryActivity" />
         <activity android:name=".Buyers.RegisterActivity" />
         <activity android:name=".Buyers.LoginActivity" />
-        <activity android:name=".Buyers.MainActivity">
+        <activity android:name=".Buyers.MainActivity"/>
+        <activity android:name=".SplashScreenActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
